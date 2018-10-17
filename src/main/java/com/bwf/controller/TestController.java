@@ -9,9 +9,7 @@ public class TestController {
 	@RequestMapping("test")
 	public void test(){
 		System.out.println(  "test controller" );
-		
-		int a ;
-		int b ;
+
 	}
 	
 }
