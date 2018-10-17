@@ -11,6 +11,7 @@ public class TestController {
 		System.out.println(  "test controller" );
 		
 		int a ;
+		int b ;
 	}
 	
 }
