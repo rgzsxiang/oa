@@ -23,9 +23,54 @@
     <!-- 访问静态资源时，让请求通过  -->
     <mvc:default-servlet-handler />
     
+
+
+	<!-- 注册拦截器 -->
+	<mvc:interceptors>
+		<!-- 登录拦截器，功能：未登录用户访问页面，直接跳转到登录页面 -->
+		
+		<mvc:interceptor>
+			<!-- 拦截那些路径中的请求 -->
+			<mvc:mapping path="/*"/>
+			<mvc:mapping path="/*/*"/>
+    		<!-- 不拦截的请求 -->
+    		<mvc:exclude-mapping path="/user/login"/>
+    		<mvc:exclude-mapping path="/user/doLogin"/>
+    		<mvc:exclude-mapping path="/**/fonts/*"/>
+	        <mvc:exclude-mapping path="/css/**"/>
+	        <mvc:exclude-mapping path="/js/**"/>
+	        <mvc:exclude-mapping path="/img/**"/>
+			<!-- 定义拦截器使用的bean -->
+			<bean class="com.bwf.interceptor.LoginInterceptor"></bean>
+		</mvc:interceptor>
+		
+		    	<!-- 权限拦截器 -->
+    	<mvc:interceptor>
+    		<mvc:mapping path="/*"/>
+    		<mvc:mapping path="/*/*"/>
+    		<mvc:exclude-mapping path="/user/login"/>
+    		<mvc:exclude-mapping path="/user/logout"/>    		
+    		<mvc:exclude-mapping path="/user/doLogin"/>
+    		<mvc:exclude-mapping path="/home"/>
+    		<mvc:exclude-mapping path="/error"/>
+    		<mvc:exclude-mapping path="/error/**"/>
+    		<mvc:exclude-mapping path="/index"/>
+    		<mvc:exclude-mapping path="/index/index"/>
+    		<mvc:exclude-mapping path="/**/fonts/*"/>
+	        <mvc:exclude-mapping path="/css/**"/>
+	        <mvc:exclude-mapping path="/js/**"/>
+	        <mvc:exclude-mapping path="/img/**"/>
+	        
+	        <bean class="com.bwf.interceptor.OperateInterceptor"></bean>
+    	</mvc:interceptor>
+		
+	</mvc:interceptors>
+	
     <mvc:resources location="/WEB-INF/resources/js/" mapping="/js/**"></mvc:resources>
     <mvc:resources location="/WEB-INF/resources/css/" mapping="/css/**"></mvc:resources>
-    <mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**"></mvc:resources>
+    <mvc:resources location="/WEB-INF/resources/img/" mapping="/img/**"></mvc:resources>  
+ 
+
 	
     <!--文件上传解析器 -->
     <bean id="multipartResolver"

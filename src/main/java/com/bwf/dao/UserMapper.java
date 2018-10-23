@@ -16,6 +16,8 @@ public interface UserMapper {
 
 	User getUserByUsernameAndPassword(User user);
 
+	User getMenusAndOperatesByUserId(int userId);
+
 
 	
 	

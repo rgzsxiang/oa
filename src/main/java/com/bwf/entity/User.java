@@ -1,5 +1,6 @@
 package com.bwf.entity;
 
+import java.util.List;
 
 public class User {
 	
@@ -8,8 +9,22 @@ public class User {
 	private String password;
 	private String nickname;
 	private String avater;
+	private List<Menu> menus;	
+	private List<Operate> operates;
 	
 	
+	public List<Operate> getOperates() {
+		return operates;
+	}
+	public void setOperates(List<Operate> operates) {
+		this.operates = operates;
+	}
+	public List<Menu> getMenus() {
+		return menus;
+	}
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
 	public int getUserId() {
 		return userId;
 	}
