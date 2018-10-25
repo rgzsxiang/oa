@@ -19,7 +19,9 @@ public class OperateInterceptor extends HandlerInterceptorAdapter{
 		// /oa/roster/show
 		System.out.println( request.getRequestURI() );
 		
+		//判断session中是否有，默认没有。
 		boolean sessionContainsUri = false;
+		
 		User user = (User) request.getSession().getAttribute("user"); 
 		for( Operate o : user.getOperates() ) {
 			if ( request.getRequestURI().contains( o.getOperateAction() ) ) {

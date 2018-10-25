@@ -53,14 +53,14 @@
    		SELECT
 		user.* , menu.* , operate.*
 		FROM user		 
-		INNER JOIN user_role ON user_role.user_id = user.user_id
-		INNER JOIN role ON user_role.role_id = role.role_id
-		INNER JOIN role_permission ON role_permission.role_id = role.role_id
-		INNER JOIN permission ON role_permission.permission_id = permission.permission_id
-		left outer join permission_menu ON permission_menu.permission_id = permission.permission_id
-		left outer join menu ON permission_menu.menu_id = menu.menu_id
-		left outer join permission_operate on permission.permission_id = permission_operate.permission_id
-		left outer join operate on permission_operate.operate_id = operate.operate_id
+		INNER JOIN user_role 				ON user_role.user_id = user.user_id
+		INNER JOIN role 					ON user_role.role_id = role.role_id
+		INNER JOIN role_permission  		ON role_permission.role_id = role.role_id
+		INNER JOIN permission 				ON role_permission.permission_id = permission.permission_id
+		left outer join permission_menu 	ON permission_menu.permission_id = permission.permission_id
+		left outer join menu 				ON permission_menu.menu_id = menu.menu_id
+		left outer join permission_operate  on permission.permission_id = permission_operate.permission_id
+		left outer join operate             on permission_operate.operate_id = operate.operate_id
 		WHERE user.user_id = #{userId}
    	</select>
    	
